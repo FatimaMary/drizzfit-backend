@@ -5,6 +5,9 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
+import userRoutes from "./routes/user.js";
+import orderRoutes from "./routes/orders.js";
+import customerRoutes from "./routes/customers.js";
 
 // CONFIGURATION
 dotenv.config();
@@ -19,10 +22,8 @@ app.use(cors());
 
 //ROUTES
 app.use("/user", userRoutes);
-app.use("/event", eventRoutes);
-app.use("/player", participantsRoutes);
-app.use("/product", productsRoutes);
-app.use("/msg", messageRoutes);
+app.use("/order", orderRoutes);
+app.use("/customer", customerRoutes);
 
 //MONGOOSE SETUP
 const PORT = process.env.PORT || 9000;
