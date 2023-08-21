@@ -1,24 +1,24 @@
-import orders from "../models/Orders.js";
+import Orders from "../models/Orders.js";
 
-export const postorder = (req, res) => {
+export const postOrder = (req, res) => {
   const userId = req.body.userId;
   const productSize = req.body.productSize;
   const productOrdered = req.body.productOrdered;
 
-  const newUser = new Users({
+  const newOrder = new Orders({
     userId,
     productSize,
     productOrdered,
   });
 
-  newUser
+  newOrder
     .save()
     .then((data) => res.json(data))
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
 export const getOrder = (req, res) => {
-  Users.find()
+  Orders.find()
     .then((users) => res.json(users))
     .catch((err) => res.status(400).json("Error: " + err));
 };
