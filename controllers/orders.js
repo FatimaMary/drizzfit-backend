@@ -19,6 +19,6 @@ export const postOrder = (req, res) => {
 
 export const getOrder = (req, res) => {
   Orders.find()
-    .then((users) => res.json(users))
+    .then((orders) => res.json(orders))
     .catch((err) => res.status(400).json("Error: " + err));
 };
