@@ -7,15 +7,19 @@ const orderSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  productSize: {
+  orderDate: {
     type: String,
     required: true,
   },
-  productsOrdered: {
+  status: {
     type: String,
     required: true,
   },
-  userId: {
+  customerId: {
+    type: String,
+    required: true,
+  },
+  billingAddress: {
     type: String,
     required: true,
   },

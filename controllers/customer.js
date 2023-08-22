@@ -1,4 +1,4 @@
-import Users from "../models/Users.js";
+import Customers from "../models/Customers.js";
 
 export const postUser = (req, res) => {
   const userId = req.body.userId;
@@ -7,7 +7,7 @@ export const postUser = (req, res) => {
   const password = req.body.password;
   const name = req.body.name;
 
-  const newUser = new Users({
+  const newUser = new Customers({
     userId,
     email,
     password,
@@ -21,14 +21,14 @@ export const postUser = (req, res) => {
 };
 
 export const getUser = (req, res) => {
-  Users.find()
+  Customers.find()
     .then((users) => res.json(users))
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
 export const getUserById = (req, res) => {
   const userId = req.params.userId;
-  Users.findOne({ userId: userId })
+  Customers.findOne({ userId: userId })
     .then((user) => {
       if (user) {
         const userDetails = {
