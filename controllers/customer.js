@@ -1,43 +1,50 @@
 import Customers from "../models/Customers.js";
 
-export const postUser = (req, res) => {
-  const userId = req.body.userId;
-  console.log("userId: ", userId);
+export const postCustomer = (req, res) => {
+  const customerId = req.body.customerId;
   const email = req.body.email;
-  const password = req.body.password;
-  const name = req.body.name;
+  // const password = req.body.password;
+  const firstName = req.body.firstName;
+  const secondName = req.body.secondName;
+  const address = req.body.address;
+  const phoneNumber = req.body.phoneNumber;
 
-  const newUser = new Customers({
-    userId,
+  const newCustomer = new Customers({
+    customerId,
     email,
-    password,
-    name,
+    firstName,
+    secondName,
+    address,
+    phoneNumber,
   });
 
-  newUser
+  newCustomer
     .save()
     .then((data) => res.json(data))
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
-export const getUser = (req, res) => {
+export const getCustomer = (req, res) => {
   Customers.find()
-    .then((users) => res.json(users))
+    .then((customers) => res.json(customers))
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
-export const getUserById = (req, res) => {
-  const userId = req.params.userId;
-  Customers.findOne({ userId: userId })
-    .then((user) => {
-      if (user) {
-        const userDetails = {
-          email: user.email,
-          name: user.name,
+export const getCustomerById = (req, res) => {
+  const customerId = req.params.customerId;
+  Customers.findOne({ customerId: customerId })
+    .then((customer) => {
+      if (customer) {
+        const customerDetails = {
+          email: customer.email,
+          firstName: customer.firstName,
+          secondName: customer.secondName,
+          phoneNumber: customer.phoneNumber,
+          address: customer.address,
         };
-        res.json(userDetails);
+        res.json(customerDetails);
       } else {
-        res.status(404).json("User not found");
+        res.status(404).json("customer not found");
       }
     })
     .catch((err) => res.status(400).json("Error: ", err));
