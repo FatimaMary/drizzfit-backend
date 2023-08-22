@@ -25,3 +25,20 @@ export const getUser = (req, res) => {
     .then((users) => res.json(users))
     .catch((err) => res.status(400).json("Error: " + err));
 };
+
+export const getUserById = (req, res) => {
+  const userId = req.params.userId;
+  Users.findOne({ userId: userId })
+    .then((user) => {
+      if (user) {
+        const userDetails = {
+          email: user.email,
+          name: user.name,
+        };
+        res.json(userDetails);
+      } else {
+        res.status(404).json("User not found");
+      }
+    })
+    .catch((err) => res.status(400).json("Error: ", err));
+};
