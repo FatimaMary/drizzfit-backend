@@ -1,65 +1,37 @@
 import mongoose from "mongoose";
 import autoIncrement from "mongoose-plugin-autoinc";
 
-const customerSchema = new mongoose.Schema({
-  customerId: {
+const productSchema = new mongoose.Schema({
+  productId: {
     type: String,
     required: true,
     unique: true,
   },
-  couponCode: {
-    type: Boolean,
-    required: true,
-  },
-  customerName: {
+  name: {
     type: String,
     required: true,
   },
-  email: {
+  description: {
     type: String,
     required: true,
   },
-  phoneNumber: {
-    type: Boolean,
-    required: true,
-  },
-  address: {
+  price: {
     type: String,
     required: true,
   },
-  town: {
-    type: String,
-    required: true,
-  },
-  postcode: {
-    type: Boolean,
-    required: true,
-  },
-  state: {
-    type: String,
-    required: true,
-  },
-  totalAmount: {
-    type: String,
-    required: true,
-  },
-  paymentDetails: {
-    type: String,
-    required: true,
-  },
-  orderId: {
+  stockQuantity: {
     type: String,
     required: true,
   },
 });
 
-customerSchema.plugin(autoIncrement.plugin, {
-  model: "DrizzfitCustomers",
-  field: "customerId",
+productSchema.plugin(autoIncrement.plugin, {
+  model: "DrizzfitProducts",
+  field: "productId",
   startAt: 1,
   incrementBy: 1,
 });
 
-const Customers = mongoose.model("DrizzfitCustomers", customerSchema);
+const Products = mongoose.model("DrizzfitProducts", productSchema);
 
-export default Customers;
+export default Products;
