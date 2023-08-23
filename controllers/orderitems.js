@@ -1,5 +1,4 @@
 import OrderItems from "../models/OrderItems.js";
-// import OrderItems from "../models/orderItems.js";
 
 export const postOrderItems = (req, res) => {
   const quantity = req.body.quantity;
