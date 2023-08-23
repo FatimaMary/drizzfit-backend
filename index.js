@@ -9,6 +9,7 @@ import orderRoutes from "./routes/orders.js";
 import customerRoutes from "./routes/customers.js";
 import productRoutes from "./routes/products.js";
 import orderItemsRoutes from "./routes/orderItem.js";
+import paymentsRoutes from "./routes/payment.js";
 
 // CONFIGURATION
 dotenv.config();
@@ -26,6 +27,7 @@ app.use("/order", orderRoutes);
 app.use("/customer", customerRoutes);
 app.use("/product", productRoutes);
 app.use("/orderitem", orderItemsRoutes);
+app.use("/pay", paymentsRoutes);
 
 //MONGOOSE SETUP
 const PORT = process.env.PORT || 9000;
